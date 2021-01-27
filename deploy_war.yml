@@ -1,5 +1,9 @@
+---
 #Ansible Playbook to build Maven, run ansible playbook to deploy to Tomcat Docker container:
+- hosts: tomcat
+  become: true
 
+tasks:
 - name: Deploy WAR file
   ansible.builtin.copy:
     src: ./target/maven-web-application.war

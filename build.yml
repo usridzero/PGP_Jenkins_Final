@@ -1,17 +1,11 @@
----
 #Ansible Playbook to deploy to Tomcat Docker container and restart tomcat:
-- hosts: tomcat
+- hosts: jenkins
   become: true
   become_method: sudo
 
   tasks:
-  - name: Deploy WAR file
-    ansible.builtin.copy:
-      src: ./target/maven-web-application.war
-      dest: /usr/src/war/app.war
-
-  - name: Stopping the Tomcat container
-    shell: systemctl restart docker
+  - name: build maven
+    shell: /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven/bin/mvn clean install
 
   #- name: Pull and run Tomcat
   #  shell: "docker run -p 8888:8080 -v /usr/src/war:/usr/local/tomcat/webapps tomcat:9.0 &"

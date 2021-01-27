@@ -3,15 +3,24 @@
 - hosts: tomcat
   become: true
   become_method: sudo
+  vars:
+    default_container_name: mywebapp
+    default_container_image: mywebapp
+    default_container_command: sleep 1d
 
   tasks:
   - name: Deploy WAR file
     ansible.builtin.copy:
       src: ./target/maven-web-application.war
-      dest: /usr/src/war/app
+      dest: /usr/src/war/app.war
 
   - name: Stopping the Tomcat container
     shell: systemctl restart docker
 
   - name: Pull and run Tomcat
-    shell: "docker run -p 8888:8080 -v /usr/src/war:/usr/local/tomcat/webapps mywebapp"
+    docker_container:
+      name: "{{ default_container_name }}"
+      image: "{{ default_container_image }}"
+      command: "{{ default_container_command }}"
+      state: present
+    #shell: "docker run -p 8888:8080 -v /usr/src/war:/usr/local/tomcat/webapps tomcat:9.0 &"

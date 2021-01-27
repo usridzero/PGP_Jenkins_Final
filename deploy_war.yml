@@ -8,10 +8,10 @@
   - name: Deploy WAR file
     ansible.builtin.copy:
       src: ./target/maven-web-application.war
-      dest: /usr/src/app
+      dest: /usr/src/war/app
 
   - name: Stopping the Tomcat container
     shell: systemctl restart docker
 
   - name: Pull and run Tomcat
-    shell: "docker run -p 8888:8080 -v /usr/src/app:/usr/local/tomcat/webapps mywebapp"
+    shell: "docker run -p 8888:8080 -v /usr/src/war:/usr/local/tomcat/webapps mywebapp"

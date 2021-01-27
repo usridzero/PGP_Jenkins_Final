@@ -18,9 +18,4 @@
     shell: systemctl restart docker
 
   - name: Pull and run Tomcat
-    docker_container:
-      name: "{{ default_container_name }}"
-      image: "{{ default_container_image }}"
-      command: "{{ default_container_command }}"
-      state: present
-    #shell: "docker run -p 8888:8080 -v /usr/src/war:/usr/local/tomcat/webapps tomcat:9.0 &"
+    shell: "docker run -p 8888:8080 -v /usr/src/war:/usr/local/tomcat/webapps tomcat:9.0 &"

@@ -1,15 +1,12 @@
 #Ansible Playbook to build Maven, run ansible playbook to deploy to Tomcat Docker container:
 
-- name: deploy
-  host: tomcat
-  
-  - name: Deploy WAR file
-    ansible.builtin.copy:
-      src: ./target/maven-web-application.war
-      dest: /usr/src/app
+- name: Deploy WAR file
+  ansible.builtin.copy:
+    src: ./target/maven-web-application.war
+    dest: /usr/src/app
 
-  - name: Stopping the Tomcat container
-    shell: systemctl restart docker
+- name: Stopping the Tomcat container
+  shell: systemctl restart docker
 
-  - name: Pull and run Tomcat
-    shell: "docker run -p 8888:8080 -v /usr/src/app:/usr/local/tomcat/webapps mywebapp"
+- name: Pull and run Tomcat
+  shell: "docker run -p 8888:8080 -v /usr/src/app:/usr/local/tomcat/webapps mywebapp"

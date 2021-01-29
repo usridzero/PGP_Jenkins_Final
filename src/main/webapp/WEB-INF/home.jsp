@@ -17,7 +17,7 @@
 <h1 align="center">Caltech-Simplilearn-2020</h1>
 <h1 align="center">CM Chef, Puppet & Ansible Final Project #1</h1>
 <h2 align="center">This is my project?!</h2>
-<h2 align="center">Jose Pagan was here, after demo...!!</h2>
+<h2 align="center">Jose Pagan was here, today's demo...!!</h2>
 
 
 </body>

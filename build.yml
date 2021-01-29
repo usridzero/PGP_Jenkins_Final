@@ -1,4 +1,4 @@
-#Ansible Playbook to deploy to build maven war from code:
+#Ansible Playbook to build maven war from code:
 - hosts: jenkins
   become: true
   become_method: sudo

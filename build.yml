@@ -7,5 +7,3 @@
   - name: build maven
     shell: /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven/bin/mvn clean install -f /var/lib/jenkins/workspace/PGP_CM_Ansible_Final_Project1/pom.xml
 
-  #- name: Pull and run Tomcat
-  #  shell: "docker run -p 8888:8080 -v /usr/src/war:/usr/local/tomcat/webapps tomcat:9.0 &"
